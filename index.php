@@ -9,7 +9,15 @@
     <title>XXX</title>
 </head>
 <body>
-<?php include 'main.php'; ?>
+<?php
+require_once ('config.php');
+require_once ('functions/router.php');
+require_once ('functions/routName.php');
+
+router(); //так как в функции выполняется die, все, что после нее не выполняется. И это мне не нравится!
+
+
+?>
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
