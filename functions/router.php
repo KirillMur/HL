@@ -13,7 +13,11 @@ function router()
         [
             'name' => 'about',
             'route' => 'about.php'
-        ]
+        ],
+        [
+        'name' => 'carscat',
+        'route' => 'cars.php'
+    ]
     ];
     $defaultRoute = 'main.php';
 

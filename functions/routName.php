@@ -11,6 +11,9 @@
             ],
             [
                 'route' => 'about'
+            ],
+            [
+                'route' => 'carscat'
             ]
         ];
 

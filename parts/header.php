@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark header">
     <div class="container-fluid">
-        <a class="navbar-brand" href="<?= routeName('main'); ?>">HEADER!</a>
+        <a class="navbar-brand red" href="<?= routeName('main'); ?>">HEADER!</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
                     <a class="nav-link active" aria-current="page" href="<?= routeName('main'); ?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cars</a>
+                    <a class="nav-link" href="<?= routeName('carscat'); ?>">Cars</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Insurances</a>
