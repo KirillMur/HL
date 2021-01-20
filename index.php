@@ -15,9 +15,8 @@
 </head>
 <body>
 <?php
-require_once ('config.php');
 require_once ('functions/router.php');
-require_once ('functions/routName.php');
+require_once('functions/getLink.php');
 
 
 define ('PATH', __DIR__.'/');

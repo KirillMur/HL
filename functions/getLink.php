@@ -1,5 +1,5 @@
 <?php
-    function routeName($name)
+    function getLink($name)
     {
 //        $routes = [
 //            [

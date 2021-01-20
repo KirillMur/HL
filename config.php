@@ -1,2 +1,7 @@
 <?php
-define ('ROOT', 'D:\xampp\htdocs\PhpstormProjects/LP/');
+define ('DSN', "mysql:host=localhost;dbname=eshop");
+define ('USERNAME', 'root');
+define ('PASSWORD', '');
+
+
+
