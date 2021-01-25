@@ -1,4 +1,14 @@
-<!doctype html>
+<?php
+    session_start();
+
+require_once('functions/router.php');
+require_once('functions/getLink.php');
+
+define ('PATH', __DIR__.'/');
+
+$page = router();
+
+?><!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -7,26 +17,17 @@
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheet/style.css">
     <title>
-        <?php
-        require_once ('functions/title.php');
-        title();
-        ?>
+        <?php echo $page['title']; ?>
     </title>
 </head>
 <body>
 <?php
-require_once ('functions/router.php');
-require_once('functions/getLink.php');
+echo $page['content'];
 
-
-define ('PATH', __DIR__.'/');
-
-router(); //так как в функции выполняется die, все, что после нее не выполняется. И это мне не нравится! - уже нет!
-
-echo '<h3>Эта надпись ниже - везде!</h3>
-Получилось убрать то, что мне не нравилось в роутере с ифами и форичем: так как форыч не зависит от ретурна иф, то
-приходилось в ифе и элсе ставить экзит, чтоб форыч не выполнялся далее. Здесь же, за счет break, этого удалось избежать
-и сократить код в 2 раза! (break с форычем использовать не удалось)';
+if (isset($page['error'])) {
+    echo $page['error'];
+    die;
+}
 ?>
 <!-- Optional JavaScript; choose one of the two! -->
 

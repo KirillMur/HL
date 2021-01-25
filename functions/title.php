@@ -1,22 +1,23 @@
 <?php
 
-function title () {
-
-switch ($_REQUEST['route'] ?? 'main')
-    {
+function title()
+{
+    switch ($_REQUEST['route'] ?? 'main') {
         case 'main':
-            echo 'golovna stronitca';
+            $title = 'golovna stronitca';
             break;
         case 'about':
-            echo 'About stronitca';
+            $title = 'About stronitca';
             break;
         case 'contactus':
-            echo 'Contact stronitca';
+            $title = 'Contact stronitca';
             break;
         case 'carscat':
-            echo 'Cars';
+            $title = 'Cars';
             break;
         default:
-            echo 'Unnamed page!';
+            $title = 'Unnamed page!';
     }
+
+    return $title;
 }
