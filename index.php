@@ -26,7 +26,6 @@ echo $page['content'];
 
 if (isset($page['error'])) {
     echo $page['error'];
-    die;
 }
 ?>
 <!-- Optional JavaScript; choose one of the two! -->

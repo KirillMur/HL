@@ -14,7 +14,19 @@ return
         'route' => 'about.php'
     ],
     [
-        'name' => 'carscat',
-        'route' => 'cars.php'
+        'name' => 'carclass',
+        'route' => 'carClass.php'
+    ],
+    [
+        'name' => 'manufacturer',
+        'route' => 'carManufacturer.php'
+    ],
+    [
+        'name' => 'model',
+        'route' => 'carModel.php'
+    ],
+    [
+        'name' => 'modeldetail',
+        'route' => 'carModelDetailed.php'
     ]
 ];
