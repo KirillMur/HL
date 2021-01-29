@@ -10,21 +10,20 @@
         $result = select($request);
         ?>
 
-        <table style="width:20%">
-        <?php
+        <table style="width:auto%">
+            <?php
             foreach ($result as $row) {
-            echo  "<tr>
+                echo  "<tr>
             <td><a href=" . $_SERVER['PHP_SELF'] . '?route=manufacturer&class=' . urlencode($row['name']) .
-                ">{$row['name']}</a></td>
+                    "> ". $_SERVER['PHP_SELF'] . '?route=manufacturer&class=<b>' . $row['name'] ." </b></a></td>
             </tr>";
             }
-        ?>
+            ?>
+            <span><?php echo PATH . 'aaa' ?></span>
         </table>
     </div>
 
 <?php include 'parts/footer.php'; ?>
 
 
-<!--SELECT model.name FROM model-->
-<!--JOIN `class` cl ON cl.id = model.class_id-->
-<!--WHERE cl.name = '" . $class . "'-->
+<!--на каждом этапе записывать класс, производителя и модель в переменную и использовать в последующем запросе-->

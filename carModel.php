@@ -18,7 +18,6 @@
         }
 
         $result = select($request);
-
         ?>
 
         <table style="width:20%">

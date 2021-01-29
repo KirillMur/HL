@@ -1,5 +1,5 @@
 <?php
-    session_start();
+//    session_start();
 
 require_once('functions/router.php');
 require_once('functions/getLink.php');
@@ -22,6 +22,7 @@ $page = router();
 </head>
 <body>
 <?php
+var_dump(PATH);
 echo $page['content'];
 
 if (isset($page['error'])) {
