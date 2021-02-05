@@ -5,7 +5,7 @@
 
         foreach ($routes as $route) {
             if ($name === $route['name']) {
-                return $_SERVER['PHP_SELF'] . '?route=' . $route['name'];
+                return $route['route_link'];
             }
         }
     }

@@ -1,23 +1,31 @@
 <?php
-
+//echo '<pre>';
+//var_export($_SERVER);
 require_once('functions/title.php');
 
 function router()
 {
     $routes = include 'routes.php';
 
-    $defaultRoute = 'main.php';
-
     ob_start();
-    if (!isset($_REQUEST['route'])) {
-        include(PATH . $defaultRoute);
-        $matchedRouteName = true;
 
-    } else {
-        foreach ($routes as $route) {
-            if ($_REQUEST['route'] === $route['name']) {
-                include(PATH . $route['route']);
-                $matchedRouteName = true;
+    foreach ($routes as $res) {
+        if (preg_match($res['route_pattern'], $_SERVER['REQUEST_URI'], $match) === 1) {
+            if ($match[0] === $_SERVER['REQUEST_URI'] && !isset($match[1]) && !isset($match[2]) && !isset($match[3])) {
+                $flag = 0;
+                include($res['route']);
+                break;
+            } elseif ($match[0] === $_SERVER['REQUEST_URI'] && isset($match[1]) && empty($match[2]) && empty($match[3])) {
+                $flag = 1;
+                include($res['route']);
+                break;
+            } elseif ($match[0] === $_SERVER['REQUEST_URI'] && isset($match[1]) && isset($match[2]) && empty($match[3])) {
+                $flag = 2;
+                include($res['route']);
+                break;
+            } elseif ($match[0] === $_SERVER['REQUEST_URI'] && isset($match[1]) && isset($match[2]) && isset($match[3])) {
+                $flag = 3;
+                include($res['route']);
                 break;
             }
         }
@@ -25,13 +33,23 @@ function router()
 
     $result = [
         'title' => title(),
-        'content' => ob_get_clean(),
+        'content' => ob_get_clean()
     ];
 
-    if (!isset($matchedRouteName)) {
+    if (empty($result['content'])) {
         $result['error'] = 'Route doesn\'t exist';
         header("HTTP/1.0 404 Not Found");
     }
 
     return $result;
 }
+
+
+//function extractRoute()  //выводит всю строку до знака ?
+//{
+//    $uri = $_SERVER['REQUEST_URI'];
+//    if (strpos($uri, '?') !== false) { //если строка #url содержит ?
+//        $uri = substr($uri, 0, strpos($uri, '?')); //записываем в $url строку от начала (0) до знака ?
+//    }
+//    return $uri;
+//}
