@@ -31,10 +31,10 @@ return
         'route_pattern' => '_^/cars/([\d+]*)[/]?([\d+]*)[/]?([\d+]*)[/]?$_',
         'route' => 'cars.php'
     ],
-//    [
-//        'name' => '',
-//        'route_link' => '',
-//        'route_pattern' => '_^/cars/model/([\d+]*)[/]?$_',
-//        'route' => 'cars.php'
-//    ]
+    [
+        'name' => '',
+        'route_link' => '',
+        'route_pattern' => '_^/cars/model/([\d+]*)[/]?$_',
+        'route' => 'cars.php'
+    ]
 ];

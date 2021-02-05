@@ -11,20 +11,24 @@ function router()
 
     foreach ($routes as $res) {
         if (preg_match($res['route_pattern'], $_SERVER['REQUEST_URI'], $match) === 1) {
-            if ($match[0] === $_SERVER['REQUEST_URI'] && !isset($match[1]) && !isset($match[2]) && !isset($match[3])) {
+            if (!isset($match[1]) && !isset($match[2]) && !isset($match[3])) {
                 $flag = 0;
                 include($res['route']);
                 break;
-            } elseif ($match[0] === $_SERVER['REQUEST_URI'] && isset($match[1]) && empty($match[2]) && empty($match[3])) {
+            } elseif (isset($match[1]) && empty($match[2]) && empty($match[3]) && isset($match[2]) && isset($match[3])) {
                 $flag = 1;
                 include($res['route']);
                 break;
-            } elseif ($match[0] === $_SERVER['REQUEST_URI'] && isset($match[1]) && isset($match[2]) && empty($match[3])) {
+            } elseif (isset($match[1]) && isset($match[2]) && empty($match[3])) {
                 $flag = 2;
                 include($res['route']);
                 break;
-            } elseif ($match[0] === $_SERVER['REQUEST_URI'] && isset($match[1]) && isset($match[2]) && isset($match[3])) {
+            } elseif (isset($match[1]) && isset($match[2]) && isset($match[3])) {
                 $flag = 3;
+                include($res['route']);
+                break;
+            } elseif (isset($match[1]) && !isset($match[2]) && !isset($match[3])) {
+                $flag = 4;
                 include($res['route']);
                 break;
             }

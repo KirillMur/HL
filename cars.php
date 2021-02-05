@@ -21,12 +21,18 @@
                             RIGHT JOIN class c ON md.class_id=c.id
                             WHERE m.id='{$match[2]}' AND c.id='{$match[1]}'"; break;
             case 3:
-                $request = "SELECT * FROM model m
+                $request = "SELECT s.*, m.id model_id, m.modification FROM model m
                             RIGHT JOIN stock s ON m.id=model_id
                             WHERE m.id={$match[3]}"; break;
+            case 4:
+                $request = "SELECT * FROM model m
+                            RIGHT JOIN stock s ON m.id=model_id
+                            WHERE m.id={$match[1]}"; break;
         }
 
-        $result = select($request);
+        if (empty($result = select($request))){
+            echo 'no results';
+        }
 
             ?>
         <table style="width:auto">
@@ -34,30 +40,31 @@
             switch ($flag) {
                 case 0:
                     foreach ($result as $row) {
-                        echo "<tr>
-                    <td><a href=" . "/cars/" . $row['id'] . ">
+                        echo "<tr><td><a href=" . "/cars/" . $row['id'] . ">
                     <b>" . $row['name'] . " </b></a></td></tr>";
                     }
                     break;
                 case 1:
                     foreach ($result as $row) {
-                        echo  "<tr>
-                    <td><a href=" . "/cars/" . $row['class_id'] . "/" . $row['make_id'] . ">
+                        echo  "<tr><td><a href=" . "/cars/" . $row['class_id'] . "/" . $row['make_id'] . ">
                     <b>". $row['make_name'] ." </b></a></td></tr>";
                     } break;
                 case 2:
                     foreach ($result as $row) {
-                        echo  "<tr>
-                    <td><a href=" . "/cars/" . $row['class_id'] . "/" . $row['brand_id'] . "/" . $row['id'] .">
-                    <b>". $row['modification'] . " 
-                    </b></a></td></tr>";
+                        echo  "<tr> <td><a href=" . "/cars/" . $row['class_id'] . "/" . $row['brand_id'] . "/"
+                            . $row['id'] ."><b>". $row['modification'] . " </b></a></td></tr>";
                     } break;
                 case 3:
                     foreach ($result as $row) {
-                        echo  "<tr>
-                    <td><a href=" . "/cars/model/" . $row['id'] .">
-                    <b>". $row['modification'] . " " . $row['color'] . " 
-                    </b></a></td></tr>";
+                        echo  "<tr><th>Комплектация</th><th>Цвет</th><th>Цена</th></tr>
+                        <tr><td><a href=" . "/cars/model/" . $row['model_id'] . ">" . $row['modification'] . "</a>
+                        <td>" . $row['color'] . "</td><td>" . $row['cost'] . " </b></td></tr>";
+                    } break;
+                case 4:
+                    foreach ($result as $row) {
+                        echo  "<tr><th>Цена</th><th>Комплектация</th><th>Цвет</th><th>Доступное кол-во</th></tr>
+                        <tr><td>$ " .  $row['cost']  . " </td><td><b> " . $row['modification'] . " </td>
+                        <td> " . $row['color'] . " </td><td> " . $row['count'] . " </b></td></tr>";
                     } break;
             }
             ?>
