@@ -1,7 +1,5 @@
 <?php
 
-//    session_start();
-
 require_once('functions/router.php');
 require_once('functions/getLink.php');
 
@@ -18,7 +16,7 @@ $page = router();
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheet/style.css">
     <title>
-        <?php echo $page['title']; ?>
+        <?= $page['title']; ?>
     </title>
 </head>
 <body>

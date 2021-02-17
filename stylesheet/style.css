@@ -54,3 +54,27 @@ A
     color: lightgrey;
     text-decoration: none;
 }
+TD, TH
+{
+    padding-right: 5px;
+}
+.buyCount
+{
+    width: 30px;
+    margin-left: 5px;
+    background-color: gray;
+    border: 1px solid black;
+    text-align: center;
+    font: bold 1em serif;
+    color: lightgray;
+    -moz-appearance: textfield;
+}
+.buyCount:hover
+{
+    background-color: lightslategray;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

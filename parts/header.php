@@ -11,7 +11,7 @@
                     <a class="nav-link active" aria-current="page" href="<?= getLink('main'); ?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= getLink('cars'); ?>">Cars</a>
+                    <a class="nav-link" href="<?= getLink('carClass'); ?>">Cars</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Insurances</a>
