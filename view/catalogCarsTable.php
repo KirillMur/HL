@@ -30,15 +30,15 @@
                             <th>Бренд</th><th>Комплектация</th><th>Цвет</th><th>Цена</th>
                         </tr>
                     <?php foreach ($result as $row) : ?>
-                        <tr class='item_box'>
-                            <td class='item_title'><b><?= $row['maker_name'] ?></b></td>
+                        <tr>
+                            <td ><b><?= $row['maker_name'] ?></b></td>
                             <td><i><a href="/cars/model/<?=
                             $row['model_id'] ?>"><?= $row['modification'] ?></a></i></td>
-                            <td class="item_color"><?= $row['color'] ?></td><td class='item_price'><?= '$'. $row['cost'] ?></td>
-                            <td><a href="#" class='add_item' data-id='<?= $row['stock_id'] ?>'
+                            <td><?= $row['color'] ?></td><td><?= '$'. $row['cost'] ?></td>
+                            <td><a href="#" data-id='<?= $row['stock_id'] ?>'
                                    onclick="addItem(this, <?= $row['stock_id'] ?>); return false"><b>Buy</b></a>
-                                <input type="number" class="buyCount" value="1" min="1" pattern="^[0-9]+$">
-                                <a href="#" class='remove_item' data-id='<?= $row['stock_id'] ?>'
+                                <input type="number" class="buyCount" id="<?= $row['stock_id'] ?>" value="1" min="1" pattern="^[0-9]+$">
+                                <a href="#" data-id='<?= $row['stock_id'] ?>'
                                 onclick="removeItem(<?= $row['stock_id'] ?>); return false"><b>X</b></a></td>
                         </tr>
                     <?php endforeach; ?>

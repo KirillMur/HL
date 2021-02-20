@@ -8,7 +8,7 @@
         <?php
         $result = carsRequest($currentRouteName, $match);
 
-        include('parts/catalogCarsTable.php');
+        include('view/catalogCarsTable.php');
         ?>
 
         <br>
