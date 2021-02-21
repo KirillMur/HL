@@ -22,7 +22,7 @@ function carsRequest ($currentRouteName, $match)
                             WHERE m.id='{$match[2]}' AND c.id='{$match[1]}'";
             break;
         case 'carModelOnStock':
-            $request = "SELECT s.color, s.cost, s.id stock_id, m.id model_id, mn.name maker_name, m.modification FROM model m
+            $request = "SELECT s.color, s.cost, s.id stock_id, s.count, m.id model_id, mn.name maker_name, m.modification FROM model m
                             JOIN stock s ON m.id=model_id
                             JOIN manufacturer mn ON mn.id=m.brand_id
                             WHERE m.id={$match[3]}";

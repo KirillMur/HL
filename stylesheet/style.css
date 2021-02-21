@@ -58,6 +58,10 @@ TD, TH
 {
     padding-right: 5px;
 }
+.tdRight>TD
+{
+    text-align: right;
+}
 .buyCount
 {
     width: 30px;
@@ -74,7 +78,8 @@ TD, TH
     background-color: lightslategray;
 }
 input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input::-webkit-inner-spin-button
+{
     -webkit-appearance: none;
     margin: 0;
 }
@@ -82,4 +87,19 @@ LABEL
 {
     display: block;
     padding-top: 10px;
+    margin: 10px;
+}
+INPUT, SELECT
+{
+    width: 200px;
+    margin-right: 10px;
+    background-color: lightgrey;
+}
+BUTTON
+{
+    width: 50px;
+    margin-right: 10px;
+    background-color: darkgray;
+    color: darkorange;
+    text-align: center;
 }

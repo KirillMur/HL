@@ -27,19 +27,23 @@
                     <?php break;
                 case 'carModelOnStock': ?>
                         <tr>
-                            <th>Бренд</th><th>Комплектация</th><th>Цвет</th><th>Цена</th>
+                            <th>Бренд</th><th>Комплектация</th><th>Цвет</th><th>Цена</th><th>Доступно</th>
                         </tr>
                     <?php foreach ($result as $row) : ?>
-                        <tr>
+                        <tr class="tdRight">
                             <td ><b><?= $row['maker_name'] ?></b></td>
                             <td><i><a href="/cars/model/<?=
                             $row['model_id'] ?>"><?= $row['modification'] ?></a></i></td>
                             <td><?= $row['color'] ?></td><td><?= '$'. $row['cost'] ?></td>
-                            <td><a href="#" data-id='<?= $row['stock_id'] ?>'
-                                   onclick="addItem(this, <?= $row['stock_id'] ?>); return false"><b>Buy</b></a>
-                                <input type="number" class="buyCount" id="<?= $row['stock_id'] ?>" value="1" min="1" pattern="^[0-9]+$">
+                            <td><?= $row['count'] ?></td>
+                            <td>
                                 <a href="#" data-id='<?= $row['stock_id'] ?>'
-                                onclick="removeItem(<?= $row['stock_id'] ?>); return false"><b>X</b></a></td>
+                                   onclick="addItem(this, <?= $row['stock_id'] ?>); return false"><b>Add to cart</b></a>
+                                <input type="number" class="buyCount" id="<?= $row['stock_id'] ?>" value="1" min="1"
+                                       max="<?= $row['count'] ?>" pattern="^[0-9]+$">
+                                <a href="#" data-id='<?= $row['stock_id'] ?>'
+                                onclick="removeItem(<?= $row['stock_id'] ?>); return false"><b>X</b></a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                     <?php break;
@@ -49,8 +53,10 @@
                         </tr>
                     <?php foreach ($result as $row) : ?>
                          <tr>
-                             <td><?= '$' . $row['cost']  ?></td><td><b><?= $row['modification'] ?></td>
-                             <td><?= $row['color'] ?></td><td><?= $row['count'] ?></td>
+                             <td><?= '$' . $row['cost']  ?></td>
+                             <td><b><?= $row['modification'] ?></td>
+                             <td><?= $row['color'] ?></td>
+                             <td><?= $row['count'] ?></td>
                          </tr>
                     <?php endforeach; ?>
                     <?php break; ?>

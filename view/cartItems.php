@@ -4,7 +4,7 @@
 </tr>
 <?php
     foreach ($result as $key => $row) : ?>
-    <tr>
+    <tr class="tdRight">
         <td ><b><?= $row['maker_name'] ?></b></td>
         <td><i><a href="/cars/model/<?=
                 $row['model_id'] ?>"><?= $row['modification'] ?></a></i></td>
