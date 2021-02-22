@@ -23,9 +23,38 @@
                     <a class="nav-link" href="<?= getLink('contactus'); ?>">Find us</a>
                 </li>
             </ul>
-            <span class="navbar-text">
-        Navbar text with an inline element
+            <span id="cart">
+        В корзине: <span>0</span>
       </span>
         </div>
     </div>
 </nav>
+
+<script>
+    setCartCountColor("cart", "white");
+    cartCountSet();
+
+    function storageSet()
+    {
+        localStorage.setItem("cartItem", JSON.stringify(attrArr))
+        cartCountSet();
+    }
+
+    function cartCountSet()
+    {
+        let localStorageLength = JSON.parse(localStorage.getItem("cartItem")).length;
+        document.getElementById('cart').getElementsByTagName('span')[0].innerHTML = localStorageLength;
+        setCartCountColor("cart", "white");
+    }
+
+    function setCartCountColor(element, color = null)
+    {
+        if (JSON.parse(localStorage.getItem("cartItem")) && JSON.parse(localStorage.getItem("cartItem")).length !== 0) {
+            document.getElementById(element).getElementsByTagName('span')[0].style.fontWeight = "bold";
+            document.getElementById(element).style.color = color;
+        } else {
+            document.getElementById(element).style.color = "unset";
+            document.getElementById(element).getElementsByTagName('span')[0].style.fontWeight = "unset";
+        }
+    }
+</script>

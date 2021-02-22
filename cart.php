@@ -1,8 +1,11 @@
 
-<a id='testButton' href="#" onclick="redirectPost(attrArr)" >SEND</a>
+<a id='testButton' href="#" onclick="sendPostToCheckout(attrArr)" >SEND</a>
 
 <script>
     var attrArr = [];
+    if (attrArr.length === 0 && localStorage.getItem("cartItem")) {
+        attrArr = JSON.parse(localStorage.getItem("cartItem"));
+    }
 
     function addItem(node, id)
     {
@@ -19,7 +22,9 @@
 
         attrArr.push({"count" : count, "id" : id});
 
-        console.log('attArr', attrArr);
+        storageSet();
+
+        // console.log('attArr', attrArr);
     }
 
     function removeItem(id)
@@ -28,6 +33,9 @@
         console.log();
         attrArr.splice(objIndex, 1);
         document.getElementById(id).value = 0;
+
+        storageSet();
+
         message(id, 'Removed', 300)
     }
 
@@ -39,20 +47,20 @@
             return;
         }
 
-        let prevElement = document.getElementById(elementId).nextElementSibling;
         let warn = document.createElement("span");
-            warn.style.paddingLeft = '10px';
-            warn.style.color = 'darkorange';
-            warn.style.transition = 'opacity 1s';
-            warn.id = id;
-            warn.innerText = msg;
-            // let prevElement = document.getElementById(elementId);
-            prevElement.parentNode.insertBefore(warn, prevElement.nextElementSibling)
-            setTimeout(function () {warn.style.opacity = '0'}, delay)
-            warn.addEventListener('transitionend', () => warn.remove());
+        warn.style.paddingLeft = '10px';
+        warn.style.color = 'darkorange';
+        warn.style.transition = 'opacity 1s';
+        warn.id = id;
+        warn.innerText = msg;
+        // let element = document.getElementById(elementId).nextElementSibling;
+        // element.parentNode.insertBefore(warn, element.nextElementSibling)
+        document.getElementById(elementId).nextElementSibling.after(warn);
+        setTimeout(function () {warn.style.opacity = '0'}, delay)
+        warn.addEventListener('transitionend', () => warn.remove());
     }
 
-    function redirectPost(data)
+    function sendPostToCheckout(data)
     {
         if (attrArr.length === 0)
         {

@@ -62,6 +62,10 @@ TD, TH
 {
     text-align: right;
 }
+.tdRight TD:last-of-type
+{
+    text-align: unset;
+}
 .buyCount
 {
     width: 30px;
@@ -101,5 +105,12 @@ BUTTON
     margin-right: 10px;
     background-color: darkgray;
     color: darkorange;
+    text-align: center;
+}
+#cart>SPAN
+{
+    display: inline-block;
+    color: darkorange;
+    min-width: 20px;
     text-align: center;
 }
