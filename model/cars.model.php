@@ -3,8 +3,6 @@
 function carsRequest ($currentRouteName, $match)
 {
 
-    $params = []; //это мне для усложнения кода)))
-
     switch ($currentRouteName) {
         case 'carClass':
             $request = "SELECT name, id FROM class";

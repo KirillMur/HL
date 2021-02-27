@@ -17,6 +17,7 @@
         if (attrArr.find(x => x.id === id)) {
             let objIndex = attrArr.findIndex((x => x.id === id));
             attrArr[objIndex].count = count;
+            storageSet();
             return;
         }
 
