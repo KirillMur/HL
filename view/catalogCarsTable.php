@@ -34,7 +34,8 @@
                             <td ><b><?= $row['maker_name'] ?></b></td>
                             <td><i><a href="/cars/model/<?=
                             $row['model_id'] ?>"><?= $row['modification'] ?></a></i></td>
-                            <td><?= $row['color'] ?></td><td><?= '$'. $row['cost'] ?></td>
+                            <td><?= $row['color'] ?></td>
+                            <td><span>$</span><span id="cost"><?= $row['cost'] ?></span></td>
                             <td><?= $row['count'] ?></td>
                             <td>
                                 <a href="#" data-id='<?= $row['stock_id'] ?>'

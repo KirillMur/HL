@@ -17,7 +17,7 @@
 
     }
 
-        $idlist = array_column($data, 'id');
+        $idlist = array_column($data, 'stock_id');
         $idlistForRequest = implode(',', $idlist);
         array_multisort($idlist,SORT_ASC, $data);
         $countlist = array_column($data, 'count');
@@ -30,6 +30,13 @@
                ORDER BY s.id ASC";
 
         $result = select($request);
+
+        $costArray = array_column($result, 'cost');
+        $costSum = array_sum($costArray);
+
+//        echo '<pre>';
+//        var_export($costSum);
+//        echo '</pre>';
 
         include('view/cartItems.php');
         include('view/checkoutDetails.php');

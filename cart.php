@@ -10,6 +10,7 @@
     function addItem(node, id)
     {
         var count = node.nextElementSibling.value;
+        var cost = document.getElementById('cost').innerText;
         if (count === '' || parseInt(count) === 0) {
             return;
         }
@@ -20,12 +21,13 @@
             storageSet();
             return;
         }
+        console.log(document.getElementById('cost').innerText);
 
-        attrArr.push({"count" : count, "id" : id});
+        attrArr.push({"count" : count, "stock_id" : id, "cost" : cost});
 
         storageSet();
 
-        // console.log('attArr', attrArr);
+        // console.log('attArr', attrArr[1]);
     }
 
     function removeItem(id)
@@ -69,8 +71,7 @@
             return;
         }
 
-        var form = document.createElement('form');
-        document.body.appendChild(form);
+
         form.method = 'post';
         form.action = '<?php echo getLink('checkout') ?>';
         var input = document.createElement('input');

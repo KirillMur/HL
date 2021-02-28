@@ -1,18 +1,19 @@
 <?php
 include_once ('config.php');
 
-function select($sql, $params = [])
+function select($sql, $columnMode = false)
 {
     try {
         $conn = new PDO(DSN, USERNAME, PASSWORD);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $conn->prepare($sql);
-        $stmt->execute($params);
+        $stmt->execute();
         // set the resulting array to associative
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll();
-
-//        $status = "Connected successfully";
+        if (!$columnMode) {
+            return $stmt->fetchAll();
+        }
+        return $stmt->fetchColumn();
     } catch (PDOException $e) {
         return "Connection failed: " . $e->getMessage();
     }
@@ -70,14 +71,11 @@ function insertMulti($table, $arrayData)
                 for ($i = 0, $interationCounti = count($dataArray) - 1; $i <= $interationCounti; $i++) { //count($dataArray) = 2
                     $singleArrayData = $dataArray[$i]; // ( 'count' => '1', 'stock_id' => 2, )
                     $valuesArray = array_values($dataArray[$i]); // ( 0 => '1', 1 => 2, )
-//                echo 'interation: ' . $i . '<br>';
                     for ($ii = 0, $interationCountii = count($singleArrayData) - 1; $ii <= $interationCountii; $ii++) { // count($singleArrayData) = 2
                         $stmt->bindParam($preparedValuesArray[$ii], ${$fieldsArray[$ii]}); //$stmt->bindParam(:name, $name)
                         ${$fieldsArray[$ii]} = $valuesArray[$ii]; //$variable = "value";
-//                    echo $ii . '<br>';
                     }
                     $stmt->execute();
-//                echo 'execute<br>';
                 }
                 break;
         }
@@ -86,7 +84,7 @@ function insertMulti($table, $arrayData)
     }
 }
 
-function insert($table, $fields, $values) {
+function insert($table, $fields, $values, $where = false) {
 
     $fields = preg_replace("/ +/", "", $fields); //избавляемся от пробелов
     $values = preg_replace("/ +/", "", $values); //избавляемся от пробелов
@@ -103,6 +101,9 @@ function insert($table, $fields, $values) {
 
     $preparedValuesString = implode(",", $preparedValuesArray); //преобразовываем обратно в строку.
 
+    if (!$where) {
+        $statement = "INSERT INTO $table ($fields) VALUES ($preparedValuesString) WHERE $where";
+    }
     $statement = "INSERT INTO $table ($fields) VALUES ($preparedValuesString)";
 
     $conn = new PDO(DSN, USERNAME, PASSWORD);
@@ -118,41 +119,7 @@ function insert($table, $fields, $values) {
 
     $stmt->execute();
 
-//    echo '<pre>';
-//    var_export($preparedValuesArray);
-//    echo '</pre>';
-
 }
-
-//function insertOrderCustomerFields($statement, $value = [])
-//{
-//
-//
-//    try {
-//        $conn = new PDO(DSN, USERNAME, PASSWORD);
-//        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//
-//        $stmt = $conn->prepare("INSERT INTO customers (name, address, gender, contact)
-//        VALUES (:name, :address, :gender, :contact)");
-//        $stmt->bindParam(':name', $name);
-//        $stmt->bindParam(':address', $address);
-//        $stmt->bindParam(':gender', $gender);
-//        $stmt->bindParam(':contact', $contact);
-//
-////        foreach ($values as $value) {
-//        $name = $value['name'];
-//        $address = $value['address'];
-//        $gender = $value['gender'];
-//        $contact = $value['contact'];
-//        $stmt->execute();
-////        }
-//
-//        return "Connected successfully";
-//    } catch (PDOException $e) {
-//        $conn->rollback();
-//        return "Connection failed: " . $e->getMessage();
-//    }
-//}
 
 
 //function insertOrderCustomerFields($value = [])
@@ -191,8 +158,6 @@ function insert($table, $fields, $values) {
 //        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //        $stmt = $conn->prepare($sql);
 //        $stmt->execute($params);
-//        // set the resulting array to associative
-//        $stmt->setFetchMode(PDO::FETCH_ASSOC);
 //
 //        $status = "Connected successfully";
 //    } catch (PDOException $e) {

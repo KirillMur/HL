@@ -1,4 +1,5 @@
 <!--<form action="--><?//= getLink('carClass') ?><!--" name="customerDetails" id="customerDetails">-->
+    <p><span>Amount: </span><span id="amount"><?= $costSum ?></span></p>
     <label><input type="text" name="name" class="customerName" value="awawaw">Name</label>
     <label><input type="text" name="address">Address</label>
     <label><select form="customerDetails" name="gender">
@@ -32,11 +33,13 @@
             "gender": document.querySelector('[name="gender"]').value,
             "contact": document.querySelector('[name="contact"]').value
             },
-                "itemlist" : JSON.parse(localStorage.getItem('cartItem'))
-            }
+                "itemlist" : JSON.parse(localStorage.getItem('cartItem')),
+                "amount" : document.getElementById("amount").innerText
+            },
+
         )
 
-        data.forEach(console.log)
+        // data.forEach(console.log)
 
         let httpRequest = await fetch("/checkoutRequest.php", {
             method: 'POST',
@@ -47,7 +50,16 @@
         });
         // console.log(JSON.stringify(data));
         let response = await httpRequest.text();
-        console.log(response);
+        if (httpRequest.ok) {
+            let message = document.createElement("span");
+            message.id = 'msg';
+            message.style.color = 'darkorange';
+            message.style.fontWeight = 'bold';
+            document.body.appendChild(message);
+            document.getElementById('msg').innerHTML = 'Congrats! Your order id: ' + response;
+            console.log(response);
+        }
+        // console.log(response);
 
         // var XMLHttpRequest = new XMLHttpRequest();
         // XMLHttpRequest.open('post', '/checkoutRequest.php')
