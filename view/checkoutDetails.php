@@ -51,6 +51,10 @@
         // console.log(JSON.stringify(data));
         let response = await httpRequest.text();
         if (httpRequest.ok) {
+            document.getElementsByClassName('mainBock')[0].remove();
+            let div = document.createElement("div");
+            document.body.appendChild(div);
+            div.className = 'mainBock';
             let message = document.createElement("span");
             message.id = 'msg';
             message.style.color = 'darkorange';
@@ -58,6 +62,7 @@
             document.body.appendChild(message);
             document.getElementById('msg').innerHTML = 'Congrats! Your order id: ' + response;
             console.log(response);
+            localStorage.clear();
         }
         // console.log(response);
 
