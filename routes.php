@@ -2,6 +2,13 @@
 return
 [
     [
+        'name' => 'admin',
+        'page_title' => 'Admin',
+        'route_link' => '/admin',
+        'route_pattern' => '_^/admin/?$_',
+        'route' => 'controller/admin.php'
+    ],
+    [
         'name' => 'main',
         'page_title' => 'MAIN',
         'route_link' => '/',

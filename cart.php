@@ -10,35 +10,29 @@
     function addItem(node, id)
     {
         var count = node.nextElementSibling.value;
-        var cost = document.getElementById('cost').innerText;
         if (count === '' || parseInt(count) === 0) {
             return;
         }
 
-        if (attrArr.find(x => x.id === id)) {
-            let objIndex = attrArr.findIndex((x => x.id === id));
+        if (attrArr.find(x => x.stock_id === id)) {
+            let objIndex = attrArr.findIndex((x => x.stock_id === id));
             attrArr[objIndex].count = count;
             storageSet();
             return;
         }
-        console.log(document.getElementById('cost').innerText);
 
-        attrArr.push({"count" : count, "stock_id" : id, "cost" : cost});
+        attrArr.push({"count" : count, "stock_id" : id});
 
         storageSet();
-
-        // console.log('attArr', attrArr[1]);
     }
 
     function removeItem(id)
     {
-        let objIndex = attrArr.findIndex((x => x.id === id));
-        console.log();
+        let objIndex = attrArr.findIndex((x => x.stock_id === id));
         attrArr.splice(objIndex, 1);
         document.getElementById(id).value = 0;
 
         storageSet();
-
         message(id, 'Removed', 300)
     }
 
@@ -46,18 +40,14 @@
     {
         var id = elementId+'.warn';
         if (document.getElementById(id)) {
-            // console.log(document.getElementById(id).textContent.includes(msg));
             return;
         }
-
         let warn = document.createElement("span");
         warn.style.paddingLeft = '10px';
         warn.style.color = 'darkorange';
         warn.style.transition = 'opacity 1s';
         warn.id = id;
         warn.innerText = msg;
-        // let element = document.getElementById(elementId).nextElementSibling;
-        // element.parentNode.insertBefore(warn, element.nextElementSibling)
         document.getElementById(elementId).nextElementSibling.after(warn);
         setTimeout(function () {warn.style.opacity = '0'}, delay)
         warn.addEventListener('transitionend', () => warn.remove());
@@ -71,7 +61,8 @@
             return;
         }
 
-
+        var form = document.createElement('form');
+        document.body.appendChild(form);
         form.method = 'post';
         form.action = '<?php echo getLink('checkout') ?>';
         var input = document.createElement('input');

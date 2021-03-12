@@ -42,8 +42,12 @@
 
     function cartCountSet()
     {
-        let localStorageLength = JSON.parse(localStorage.getItem("cartItem")).length;
-        document.getElementById('cart').getElementsByTagName('span')[0].innerHTML = localStorageLength;
+        if (localStorage.getItem("cartItem")) {
+            let localStorageLength = JSON.parse(localStorage.getItem("cartItem")).length;
+            document.getElementById('cart').getElementsByTagName('span')[0].innerHTML = localStorageLength;
+        } else {
+            document.getElementById('cart').getElementsByTagName('span')[0].innerHTML = 0;
+        }
         setCartCountColor("cart", "white");
     }
 

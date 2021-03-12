@@ -1,16 +1,16 @@
 <!--<form action="--><?//= getLink('carClass') ?><!--" name="customerDetails" id="customerDetails">-->
-    <p><span>Amount: </span><span id="amount"><?= $costSum ?></span></p>
-    <label><input type="text" name="name" class="customerName" value="awawaw">Name</label>
-    <label><input type="text" name="address">Address</label>
-    <label><select form="customerDetails" name="gender">
+    <p><span>Amount: </span><span id="amount"><?= $orderAmount ?></span></p>
+    <p><label><input type="text" name="name" class="customerName" value="awawaw">Name</label></p>
+    <p><label><input type="text" name="address">Address</label></p>
+    <p><label><select name="gender">
         <option>Он</option>
         <option>Оно</option>
         <option>Не ясно</option>
-    </select>Gender</label>
-    <label><input type="text" name="contact">Contact</label>
+    </select>Gender</label></p>
+    <p><label><input type="text" name="contact">Contact</label></p>
     <noscript><button type="submit"><b>Send</b></button></noscript>
     <a href="#" id="sendLink"><b>Send</b></a>
-<!--</form>-->
+<!--</form>--> <p></p>
 
 
 
@@ -34,12 +34,10 @@
             "contact": document.querySelector('[name="contact"]').value
             },
                 "itemlist" : JSON.parse(localStorage.getItem('cartItem')),
-                "amount" : document.getElementById("amount").innerText
+                // "amount" : document.getElementById("amount").innerText // удалено из соображений безопасности
             },
 
         )
-
-        // data.forEach(console.log)
 
         let httpRequest = await fetch("/checkoutRequest.php", {
             method: 'POST',
@@ -48,8 +46,8 @@
             },
             body: JSON.stringify(data)
         });
-        // console.log(JSON.stringify(data));
         let response = await httpRequest.text();
+        console.log(response);
         if (httpRequest.ok) {
             document.getElementsByClassName('mainBock')[0].remove();
             let div = document.createElement("div");
@@ -63,8 +61,8 @@
             document.getElementById('msg').innerHTML = 'Congrats! Your order id: ' + response;
             console.log(response);
             localStorage.clear();
+            cartCountSet();
         }
-        // console.log(response);
 
         // var XMLHttpRequest = new XMLHttpRequest();
         // XMLHttpRequest.open('post', '/checkoutRequest.php')

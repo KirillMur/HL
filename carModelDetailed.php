@@ -15,7 +15,7 @@
             ";
         }
 
-        $result = select($request);
+        $result = DB::select($request);
 
         if (empty($result)) {
             echo 'Out of stock!';

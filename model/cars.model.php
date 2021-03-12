@@ -32,7 +32,7 @@ function carsRequest ($currentRouteName, $match)
             break;
     }
 
-    $result = select($request);
+    $result = DB::select($request);
 
     if (empty($result)) {
         echo'no results';
