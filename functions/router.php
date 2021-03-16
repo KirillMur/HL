@@ -26,15 +26,3 @@ function router()
 
     return $result;
 }
-//
-//
-//function extractRoute()  //выводит всю строку до знака ?
-//{
-//    echo '<pre>';
-//    var_export($_GET); die;
-//    $uri = $_SERVER['REQUEST_URI'];
-//    if (strpos($uri, '?') !== false) { //если строка #url содержит ?
-//        $uri = substr($uri, 0, strpos($uri, '?')); //записываем в $url строку от начала (0) до знака ?
-//    }
-//    return $uri;
-//}
