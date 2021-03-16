@@ -1,6 +1,6 @@
     document.getElementById("sendLink").onclick = collectData;
 
-    console.log(localStorage.getItem('cartItem'));
+    // console.log(localStorage.getItem('cartItem'));
 
     async function collectData() {
     let data = [];
