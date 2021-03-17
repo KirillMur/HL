@@ -10,7 +10,8 @@ function router()
         if (preg_match($res['route_pattern'], parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), $match) === 1) {
             $currentRouteName = $res['name'];
             $currentPageTitle = $res['page_title'];
-            include($res['route']);
+            include($res['controller']);
+            isset($res['action']) ? $res['action']() : null;
         }
     }
 
@@ -25,4 +26,15 @@ function router()
     }
 
     return $result;
+}
+
+function getLink($name)
+{
+    $routes = include 'routes.php';
+
+    foreach ($routes as $route) {
+        if ($name === $route['name']) {
+            return $route['route_link'];
+        }
+    }
 }

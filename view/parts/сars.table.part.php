@@ -38,11 +38,11 @@
                             <td><span>$</span><span id="cost"><?= $row['cost'] ?></span></td>
                             <td><?= $row['count'] ?></td>
                             <td>
-                                <a href="#" data-id='<?= $row['stock_id'] ?>'
+                                <a href="#"
                                    onclick="addItem(this, <?= $row['stock_id'] ?>); return false"><b>Add to cart</b></a>
                                 <input type="number" class="buyCount" id="<?= $row['stock_id'] ?>" value="1" min="1"
                                        max="<?= $row['count'] ?>" pattern="^[0-9]+$">
-                                <a href="#" data-id='<?= $row['stock_id'] ?>'
+                                <a href="#"
                                 onclick="removeItem(<?= $row['stock_id'] ?>); return false"><b>X</b></a>
                             </td>
                         </tr>

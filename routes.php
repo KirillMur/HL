@@ -6,69 +6,72 @@ return
         'page_title' => 'Admin',
         'route_link' => '/admin',
         'route_pattern' => '_^/admin/?$_',
-        'route' => 'controller/admin.php'
+        'controller' => 'controller/AdminController.php'
     ],
     [
         'name' => 'main',
         'page_title' => 'MAIN',
         'route_link' => '/',
         'route_pattern' => '_^/$_',
-        'route' => 'main.php'
+        'controller' => 'controller/StaticPageController.php',
+        'action' => 'main'
     ],
     [
         'name' => 'contactus',
         'page_title' => 'Contact Us',
         'route_link' => '/contactus/',
         'route_pattern' => '_^/contactus/$_',
-        'route' => 'contactus.php'
+        'controller' => 'controller/StaticPageController.php',
+        'action' => 'contactus'
     ],
     [
         'name' => 'about',
         'route_link' => '/about/',
         'page_title' => 'About Us',
         'route_pattern' => '_^/about/?$_',
-        'route' => 'about.php'
+        'controller' => 'controller/StaticPageController.php',
+        'action' => 'about'
     ],
     [
         'name' => 'carClass',
         'page_title' => 'Cars',
         'route_link' => '/cars/',
         'route_pattern' => '_^/cars/$_',
-        'route' => 'controller/cars.php'
+        'controller' => 'controller/CarsController.php',
     ],
     [
         'name' => 'carMaker',
         'page_title' => 'Cars',
         'route_link' => '',
         'route_pattern' => '_^/cars/(\d+)[/]?$_',
-        'route' => 'controller/cars.php'
+        'controller' => 'controller/CarsController.php',
     ],
     [
         'name' => 'carModel',
         'page_title' => 'Cars',
         'route_link' => '',
         'route_pattern' => '_^/cars/(\d+)/(\d+)[/]?$_',
-        'route' => 'controller/cars.php'
+        'controller' => 'controller/CarsController.php',
     ],
     [
         'name' => 'carModelOnStock',
         'page_title' => 'Cars',
         'route_link' => '',
         'route_pattern' => '_^/cars/(\d+)/(\d+)/(\d+)[/]?$_',
-        'route' => 'controller/cars.php'
+        'controller' => 'controller/CarsController.php',
     ],
     [
         'name' => 'carModelDetail',
         'page_title' => 'Model Detail',
         'route_link' => '',
         'route_pattern' => '_^/cars/model/(\d+)[/]?$_',
-        'route' => 'controller/cars.php'
+        'controller' => 'controller/CarsController.php',
     ],
     [
         'name' => 'checkout',
         'page_title' => 'Check out',
         'route_link' => '/checkout',
         'route_pattern' => '_^/checkout/?$_',
-        'route' => 'controller/checkout.php'
+        'controller' => 'controller/CheckoutController.php'
     ]
 ];

@@ -17,7 +17,7 @@
 
     )
 
-    let httpRequest = await fetch("/checkoutRequest.php", {
+    let httpRequest = await fetch("/checkoutHandler.php", {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json;charset=utf-8'
@@ -43,11 +43,11 @@
 }
 
     // var XMLHttpRequest = new XMLHttpRequest();
-    // XMLHttpRequest.open('post', '/checkoutRequest.php')
+    // XMLHttpRequest.open('post', '/checkoutHandler.php')
 
 
     // var req = new XMLHttpRequest();
-    // req.open('post', '/checkoutRequest.php', true);
+    // req.open('post', '/checkoutHandler.php', true);
     // req.onreadystatechange = function (aEvt) {
     //     if (req.readyState === 4) {
     //         if(req.status === 200)

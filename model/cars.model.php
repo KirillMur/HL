@@ -1,4 +1,5 @@
 <?php
+require_once('functions/PDO.php');
 
 function carsRequest ($currentRouteName, $match)
 {
@@ -34,8 +35,5 @@ function carsRequest ($currentRouteName, $match)
 
     $result = DB::select($request);
 
-    if (empty($result)) {
-        echo'no results';
-    }
     return $result;
 }

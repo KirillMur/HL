@@ -1,7 +1,6 @@
 <?php
 
 require_once('functions/router.php');
-require_once('functions/getLink.php');
 include_once ('config.php');
 
 define ('PATH', __DIR__.'/');

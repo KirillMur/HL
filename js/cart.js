@@ -53,7 +53,7 @@ function sendPostToCheckout(data)
 {
     if (attrArr.length === 0)
     {
-        message('testButton', 'No data', 2000);
+        message('send', 'No data', 2000);
         return;
     }
 
