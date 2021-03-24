@@ -14,13 +14,24 @@
                     <a class="nav-link" href="<?= getLink('carClass'); ?>">Cars</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Insurances</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="<?= getLink('about'); ?>">About us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= getLink('contactus'); ?>">Find us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="login">Login</a>
+                </li>
+                <li class="hidden" id="loginBlock">
+                    <form action="/controller/AccessController.php" method="post" name="form">
+                        <label for="username">Name: </label><input type="text" name="username" id="username" placeholder="username" aria-label="3-digit area code" size="2">
+                        <label for="password">Password: </label><input type="password" name="password" id="password">
+                        <input type="hidden" name="referer" value="<?= $_SERVER['REQUEST_URI'] ?>">
+                        <input class="hidden" type="submit">
+                    </form>
+                </li>
+                <li >
+                    <span id='loginFormMessageBox'></span>
                 </li>
             </ul>
             <span id="cart">
@@ -31,3 +42,4 @@
 </nav>
 
 <script src="/js/header.js"></script>
+<script src="/js/loginForm.js"></script>

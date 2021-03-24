@@ -87,19 +87,12 @@ input::-webkit-inner-spin-button
     -webkit-appearance: none;
     margin: 0;
 }
-/*LABEL*/
-/*{*/
-/*    !*display: block;*!*/
-/*    padding-top: 10px;*/
-/*    margin: 10px;*/
-/*}*/
+
 INPUT, SELECT
 {
     width: 200px;
     margin-right: 10px;
-    /*margin-top: 10px;*/
     background-color: lightgrey;
-    /*display: block;*/
 }
 BUTTON
 {
@@ -124,4 +117,19 @@ BUTTON
 #selector
 {
     padding-bottom: 25px;
+}
+.hidden
+{
+    display: none;
+}
+#loginBlock
+{
+    margin-top: 6px;
+}
+#loginFormMessageBox
+{
+    display: inline-block;
+    margin-top: 9px;
+    color: darkgray;
+    /*font-weight: bold;*/
 }

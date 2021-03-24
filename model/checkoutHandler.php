@@ -1,5 +1,5 @@
 <?php
-require_once('functions/PDO.php');
+require_once(__DIR__.'/../functions/PDO.php');
 
 $answ = file_get_contents('php://input');
 $answ = json_decode($answ, true);

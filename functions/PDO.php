@@ -1,5 +1,5 @@
 <?php
-include_once ('config.php');
+include_once (__DIR__.'/../config.php');
 
 class DB
 {
@@ -16,6 +16,20 @@ class DB
             return $stmt->fetchColumn();
         } catch (PDOException $e) {
             return "Connection failed: " . $e->getMessage();
+        }
+    }
+
+    static public function update(string $table, string $field, string $value, string $where)
+    {
+        $statement = "UPDATE $table SET $field='$value' WHERE $where";
+
+        try {
+            $conn = self::conn();
+            $stmt = $conn->prepare($statement);
+            $stmt->execute();
+
+        } catch (PDOException $e) {
+            return "Error: " . $e->getMessage();
         }
     }
 

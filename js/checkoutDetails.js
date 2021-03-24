@@ -17,7 +17,7 @@
 
     )
 
-    let httpRequest = await fetch("/checkoutHandler.php", {
+    let httpRequest = await fetch("/model/checkoutHandler.php", {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json;charset=utf-8'
