@@ -10,8 +10,9 @@ function router()
         if (preg_match($res['route_pattern'], parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), $match) === 1) {
             $currentRouteName = $res['name'];
             $currentPageTitle = $res['page_title'];
+            $action = $res['action'] ?? null;
             include($res['controller']);
-            isset($res['action']) ? $res['action']() : null;
+//            isset($res['action']) ? $res['action']() : null;
         }
     }
 

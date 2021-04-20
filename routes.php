@@ -38,6 +38,7 @@ return
         'route_link' => '/cars/',
         'route_pattern' => '_^/cars/$_',
         'controller' => 'controller/CarsController.php',
+        'action' => 'showCarClassList'
     ],
     [
         'name' => 'carMaker',
@@ -45,6 +46,7 @@ return
         'route_link' => '',
         'route_pattern' => '_^/cars/(\d+)[/]?$_',
         'controller' => 'controller/CarsController.php',
+        'action' => 'showCarMakersPageByClass'
     ],
     [
         'name' => 'carModel',
@@ -52,6 +54,7 @@ return
         'route_link' => '',
         'route_pattern' => '_^/cars/(\d+)/(\d+)[/]?$_',
         'controller' => 'controller/CarsController.php',
+        'action' => 'showCarMakersPageByClassAndMaker'
     ],
     [
         'name' => 'carModelOnStock',
@@ -59,6 +62,7 @@ return
         'route_link' => '',
         'route_pattern' => '_^/cars/(\d+)/(\d+)/(\d+)[/]?$_',
         'controller' => 'controller/CarsController.php',
+        'action' => 'showCarsStockById'
     ],
     [
         'name' => 'carModelDetail',
@@ -66,12 +70,13 @@ return
         'route_link' => '',
         'route_pattern' => '_^/cars/model/(\d+)[/]?$_',
         'controller' => 'controller/CarsController.php',
+        'action' => 'showCarModelDetails'
     ],
     [
-        'name' => 'checkout',
-        'page_title' => 'Check out',
-        'route_link' => '/checkout',
-        'route_pattern' => '_^/checkout/?$_',
-        'controller' => 'controller/CheckoutController.php'
+        'name' => 'cart',
+        'page_title' => 'Cart',
+        'route_link' => '/cart',
+        'route_pattern' => '_^/cart/?$_',
+        'controller' => 'controller/CartController.php'
     ]
 ];

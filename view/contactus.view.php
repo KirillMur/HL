@@ -1,5 +1,5 @@
-<?php include 'parts/header.php'; ?>
-<?php include 'parts/widget.php'; ?>
+<?php include 'parts/header.view.php'; ?>
+<?php include 'parts/widget.view.php'; ?>
 
     <div class="mainBock">
         <h2>contactus.php</h2>
@@ -9,4 +9,4 @@
         <img src="/img/here.PNG" alt="here">
     </div>
 
-<?php include 'parts/footer.php'; ?>
+<?php include 'parts/footer.view.php'; ?>

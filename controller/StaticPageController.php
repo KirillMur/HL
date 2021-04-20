@@ -1,5 +1,7 @@
 <?php
 
+!$action ?: $action();
+
 function main()
 {
     include 'view/main.view.php';

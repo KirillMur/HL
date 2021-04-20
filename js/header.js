@@ -1,9 +1,9 @@
 setCartCountColor("cart", "white");
 cartCountSet();
 
-function storageSet()
+function storageCartItemsSet(data)
 {
-    localStorage.setItem("cartItem", JSON.stringify(attrArr))
+    localStorage.setItem("cartItem", data);
     cartCountSet();
 }
 

@@ -24,7 +24,7 @@
                 </li>
                 <li class="hidden" id="loginBlock">
                     <form action="/controller/AccessController.php" method="post" name="form">
-                        <label for="username">Name: </label><input type="text" name="username" id="username" placeholder="username" aria-label="3-digit area code" size="2">
+                        <label for="username">Name: </label><input type="text" name="username" id="username" placeholder="username">
                         <label for="password">Password: </label><input type="password" name="password" id="password">
                         <input type="hidden" name="referer" value="<?= $_SERVER['REQUEST_URI'] ?>">
                         <input class="hidden" type="submit">
@@ -35,7 +35,12 @@
                 </li>
             </ul>
             <span id="cart">
-        В корзине: <span>0</span>
+            <a href="#" onclick="gotoCart(localStorage.getItem('cartItem'))">
+                В корзине
+            </a>
+            <span>
+                0
+            </span>
       </span>
         </div>
     </div>
@@ -43,3 +48,4 @@
 
 <script src="/js/header.js"></script>
 <script src="/js/loginForm.js"></script>
+<script src="/js/gotoCart.js"></script>

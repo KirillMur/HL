@@ -1,9 +1,9 @@
 <table>
 <tr>
-    <th>Бренд</th><th>Комплектация</th><th>Цвет</th><th>Цена</th><th>Количество</th>
+    <th>Бренд</th><th>Комплектация</th><th>Цвет</th><th>Цена</th><th>В заказе</th>
 </tr>
 <?php
-    foreach ($result as $key => $row) : ?>
+    foreach ($result['data'] as $key => $row) : ?>
     <tr class="tdRight">
         <td ><b><?= $row['maker_name'] ?></b></td>
         <td><i><a href="/cars/model/<?=
@@ -13,3 +13,4 @@
     </tr>
 <?php endforeach; ?>
 </table>
+<!-- вывод перед подтверждением заказа -->

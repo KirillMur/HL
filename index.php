@@ -1,12 +1,7 @@
 <?php
-//if (!isset($_SESSION)) {
-//ini_set('session.use_cookies', 1);
-//    ini_set('session.cookie_secure', '0');
-    session_start();
-//}
-//set_include_path(get_include_path() . PATH_SEPARATOR . 'C:\xampp\htdocs\k2');
-require_once('functions/router.php');
-//require_once('controller/AccessController.php');
+session_start();
+
+require_once('controller/RouterController.php');
 include_once ('config.php');
 
 //session_id('68hnt1eitva02rpfsd20e561sc');
@@ -32,7 +27,7 @@ define ('PATH', __DIR__.'/');
 
 $page = router();
 
-?><!doctype html>
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -46,8 +41,6 @@ $page = router();
 </head>
 <body>
 <?php
-//var_export($_SESSION);
-//var_export($_COOKIE);
 
 echo $page['content'];
 

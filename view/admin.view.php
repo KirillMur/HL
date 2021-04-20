@@ -1,4 +1,4 @@
-<?php include 'view/parts/header.php'; ?>
+<?php include 'view/parts/header.view.php'; ?>
 
     <div class="mainBock">
         <h2>admin.php!</h2>
@@ -16,6 +16,6 @@
         </div>
     </div>
 
-<?php include 'view/parts/footer.php'; ?>
+<?php include 'view/parts/footer.view.php'; ?>
 
 <script src="/js/admin.js"></script>

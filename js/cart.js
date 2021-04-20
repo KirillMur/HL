@@ -3,68 +3,109 @@ if (attrArr.length === 0 && localStorage.getItem("cartItem")) {
     attrArr = JSON.parse(localStorage.getItem("cartItem"));
 }
 
-function addItem(node, id)
+if (attrArr.length > 0) {
+    attrArr.forEach(element => {
+        showAddedToCart(element.stock_id);
+    })
+}
+
+function addItem(id, count)
 {
-    var count = node.nextElementSibling.value;
-    if (count === '' || parseInt(count) === 0) {
-        return;
+    var countInput = document.getElementById('countInput' + id) || false;
+
+    if (attrArr.length !== 0 && attrArr.find(x => x.stock_id === id)) {
+        var objIndex = attrArr.findIndex((x => x.stock_id === id));
+
+        if (attrArr[objIndex].count < count ) {
+            if (countInput && countInput.value !== attrArr[objIndex].count && (attrArr[objIndex].count + parseInt(countInput.value)) <= count) {
+                attrArr[objIndex].count += parseInt(countInput.value);
+                message(id, countInput.value + ' added', 200);
+            } else if (countInput && (attrArr[objIndex].count + parseInt(countInput.value)) > count) {
+                message(id, 'Wrong quantity', 1000);
+                return;
+            } else if (!countInput) {
+                attrArr[objIndex].count += 1;
+                message(id, '1 added', 200);
+            }
+        } else {
+            message(id, 'max count reached', 1000);
+            return;
+        }
+    } else {
+        if (countInput.value) {
+            if (countInput.value <= count) {
+                attrArr.push({"count": parseInt(countInput.value), "stock_id": id});
+                setTimeout(message, 1, id, countInput.value + ' added', 200);
+            } else {
+                message(id, 'Wrong quantity', 1000);
+                return;
+            }
+
+        } else {
+            attrArr.push({"count": 1, "stock_id": id});
+            setTimeout(message, 1, id, '1 added', 200);
+        }
+
     }
 
-    if (attrArr.find(x => x.stock_id === id)) {
-        let objIndex = attrArr.findIndex((x => x.stock_id === id));
-        attrArr[objIndex].count = count;
-        storageSet();
-        return;
-    }
-
-    attrArr.push({"count" : count, "stock_id" : id});
-
-    storageSet();
+    showAddedToCart(id);
+    storageCartItemsSet(JSON.stringify(attrArr));
 }
 
 function removeItem(id)
 {
     let objIndex = attrArr.findIndex((x => x.stock_id === id));
-    attrArr.splice(objIndex, 1);
-    document.getElementById(id).value = 0;
 
-    storageSet();
+    if(!attrArr[objIndex]) {
+        return;
+    }
+
+    attrArr.splice(objIndex, 1);
+
+    storageCartItemsSet(JSON.stringify(attrArr));
+    showAddedToCart(id, true);
     message(id, 'Removed', 300)
 }
 
 function message(elementId, msg, delay)
 {
-    var id = elementId+'.warn';
+    var id = elementId + '.warn';
+
     if (document.getElementById(id)) {
-        return;
+        document.getElementById(id).remove();
     }
+
     let warn = document.createElement("span");
     warn.style.paddingLeft = '10px';
     warn.style.color = 'darkorange';
     warn.style.transition = 'opacity 1s';
     warn.id = id;
     warn.innerText = msg;
-    document.getElementById(elementId).nextElementSibling.after(warn);
+    if(document.getElementById(elementId).childElementCount !== 0) {
+        document.getElementById(elementId).lastElementChild.after(warn);
+    } else {
+        document.getElementById(elementId).after(warn);
+    }
     setTimeout(function () {warn.style.opacity = '0'}, delay)
     warn.addEventListener('transitionend', () => warn.remove());
 }
 
-function sendPostToCheckout(data)
+function showAddedToCart(elementId, remove = null)
 {
-    if (attrArr.length === 0)
-    {
-        message('send', 'No data', 2000);
-        return;
+    var id = elementId + '.addedMsg';
+    if(remove) {
+        if (document.getElementById(id))
+            document.getElementById(id).remove();
+            return;
     }
 
-    var form = document.createElement('form');
-    document.body.appendChild(form);
-    form.method = 'post';
-    form.action = document.getElementById('send').dataset['link'];
-    var input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = 'cartData';
-    input.value = JSON.stringify(data);
-    form.appendChild(input);
-    form.submit();
+    if (document.getElementById(id)) {
+        return;
+    }
+    let addedMsg = document.createElement("span");
+    addedMsg.style.paddingLeft = '10px';
+    addedMsg.style.color = 'white';
+    addedMsg.id = id;
+    addedMsg.innerText = 'Added to cart';
+    document.getElementById(elementId).lastElementChild.after(addedMsg);
 }

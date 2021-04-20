@@ -94,14 +94,14 @@ INPUT, SELECT
     margin-right: 10px;
     background-color: lightgrey;
 }
-BUTTON
-{
-    width: 50px;
-    margin-right: 10px;
-    background-color: darkgray;
-    color: darkorange;
-    text-align: center;
-}
+/*BUTTON*/
+/*{*/
+/*    width: 50px;*/
+/*    margin-right: 10px;*/
+/*    background-color: darkgray;*/
+/*    color: darkorange;*/
+/*    text-align: center;*/
+/*}*/
 #cart>SPAN
 {
     display: inline-block;
@@ -132,4 +132,8 @@ BUTTON
     margin-top: 9px;
     color: darkgray;
     /*font-weight: bold;*/
+}
+#gotoCart:hover
+{
+    color:darkorange;
 }

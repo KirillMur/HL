@@ -1,0 +1,1 @@
+<p>Congratulations! Your order id is <?= $lastIdOrder ?>!</p>
